@@ -13,3 +13,8 @@ The other packages include:
 
 ## Install 
 `npm install --save eslint-formatter-json-standard`
+
+## Usage
+`eslint --ext ts --output-file lint-report.json --format json-standard --cache src/*`
+
+This will run eslint on all .ts files in the _/src_ folder and output the results file _lint-report.json_
