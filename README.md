@@ -1,10 +1,10 @@
 # eslint-formatter-json-standard
-Format ESLint output as standardized CI tooling output JSON
+Report ESLint output in a standardized JSON format.
 
 ## Description
-Format ESLint output to [standardized CI tooling output JSON](https://gist.githubusercontent.com/agyemanjp/0f43de0639a7ec872e9ebcbe6166d5d9/raw/ccb90a9298561f2ba7c07ba6843b2b25244f9cf7/code-check-general.schema.json).
+Report ESLint output in a [standardized JSON format](https://gist.githubusercontent.com/agyemanjp/0f43de0639a7ec872e9ebcbe6166d5d9/raw/ccb90a9298561f2ba7c07ba6843b2b25244f9cf7/code-check-general.schema.json).
 
-This package is part of the series of packages for reporting tooling output in a standardized JSON format for use with the [ci-checks-action](https://github.com/marketplace/actions/create-github-checks-from-code-check-script-output-files) Github action. 
+This package is part of the series of packages for reporting tooling output in a standardized JSON format, for use with the [Annotate check scripts output](https://github.com/marketplace/actions/annotate-check-scripts-output) Github action. 
 
 The other packages include:
 
@@ -12,9 +12,9 @@ The other packages include:
 
 
 ## Install 
-`npm install --save eslint-formatter-json-standard`
+`npm install --save-dev eslint-formatter-json-standard`
 
 ## Usage
-`eslint --ext ts --output-file lint-report.json --format json-standard --cache src/*`
+`eslint --ext ts --output-file .lint.run.json --format json-standard --cache 'src/**'`
 
-This will run eslint on all .ts files in the _/src_ folder and output the results file _lint-report.json_
+This will run eslint on all .ts files in the _/src_ folder and output the results file _.lint.run.json_
