@@ -34,7 +34,7 @@
 		"lint": "eslint --ext ts --output-file .lint.run.json --format dist/index.js --cache 'src/**'",
 		"build": "npm run schema && tsc && flatten dist && rm -rf dist/*.test.js.map dist/*.test.d.ts",
 		"test": "mocha ./dist/*.test.js",
-		"ci": "npm run clean && npm run build && npm run lint &&  npm run test"
+		"ci": "npm run clean && npm run build && npm run lint && npm run test"
 	},
 	"devDependencies": {
 		"@hutsoninc/flatten-dir-cli": "^1.0.2",

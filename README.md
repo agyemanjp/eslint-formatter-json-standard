@@ -1,5 +1,5 @@
 # eslint-formatter-json-standard
-Report ESLint output in a standardized JSON format.
+Output ESLint results in a standardized JSON format.
 
 ## Description
 Report ESLint output in a [standardized JSON format](https://gist.githubusercontent.com/agyemanjp/0f43de0639a7ec872e9ebcbe6166d5d9/raw/ccb90a9298561f2ba7c07ba6843b2b25244f9cf7/code-check-general.schema.json).
