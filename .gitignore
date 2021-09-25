@@ -1,5 +1,6 @@
 dist/
 node_modules/
+*.run.json
 *-report.json
 *.tsbuildinfo
 .eslintcache

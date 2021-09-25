@@ -1,51 +1,55 @@
 {
 	"name": "eslint-formatter-json-standard",
-	"version": "1.0.0",
-	"description": "Format ESLint output as standardized CI tooling output JSON",
+	"version": "1.0.1",
+	"description": "Output ESLint results in a standardized JSON format",
 	"main": "dist/index.js",
 	"files": [
 		"/dist/*.js",
-		"!/dist/check-general.*",
-		"!/dist/*.test.*"
+		"!/dist/check-general.*"
 	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/agyemanjp/eslint-formatter-json-standard.git"
 	},
 	"keywords": [
+		"lint",
 		"eslint",
+		"formatter",
 		"eslint-formatter",
-		"eslintformatter"
+		"continuous-integration",
+		"github-actions",
+		"json"
 	],
 	"license": "MIT",
-	"author": "James Prempeh <agyemanjp@danfortsystems.com>",
+	"author": "James A. Prempeh <agyemanjp@danfortsystems.com>",
 	"bugs": {
 		"url": "https://github.com/agyemanjp/eslint-formatter-json-standard/issues"
 	},
 	"homepage": "https://github.com/agyemanjp/eslint-formatter-json-standard#readme",
 	"scripts": {
-		"setup": "rm -rf ./node_modules package-lock.json && npm install",
-		"clean": "rm -rf dist .eslintcache *-report.json src/check-general.ts ",
+		"deps": "rm -rf ./node_modules package-lock.json && npm install",
+		"clean": "rm -rf dist .eslintcache *.run.json src/check-general.ts ",
 		"schema": "json2ts ./src/check-general.schema.json ./src/check-general.ts",
-		"lint": "eslint --ext ts --output-file lint-report.json --format dist/index.js --cache src/*",
-		"build": "npm run schema && tsc && flatten dist && rm -rf dist/*.test.js.map dist/*.test.d.ts",
-		"test": "mocha ./dist/*.test.js",
-		"ci": "npm run clean && npm run build && npm run lint &&  npm run test"
+		"lint": "eslint --ext ts --cache 'src/**'",
+		"lintci": "eslint --ext ts --output-file .lint.run.json --format dist/index.js --cache 'src/**'",
+		"compile": "npm run schema && tsc",
+		"test": "mocha --require ts-node/register test/*.test.*",
+		"testci": "mocha --require ts-node/register test/*.test.* --reporter mocha-reporter-json-standard >| .test.run.json",
+		"build": "npm run lint && npm run compile && npm run test"
 	},
 	"devDependencies": {
-		"@hutsoninc/flatten-dir-cli": "^1.0.2",
-		"@types/eslint": "^7.2.0",
+		"@types/eslint": "7.28.0",
 		"@types/mocha": "7.0.2",
 		"@types/node": "14.0.13",
-		"@types/source-map-support": "^0.5.1",
-		"@typescript-eslint/eslint-plugin": "3.4.0",
-		"@typescript-eslint/parser": "3.4.0",
-		"eslint": "^7.3.1",
+		"@types/source-map-support": "0.5.1",
+		"@typescript-eslint/eslint-plugin": "4.31.2",
+		"@typescript-eslint/parser": "4.31.2",
+		"eslint": "7.32.0",
 		"eslint-plugin-fp": "2.3.0",
-		"json-schema-to-typescript": "^9.1.0",
-		"mocha": "8.0.1",
-		"source-map-support": "^0.5.19",
-		"typescript": "3.9.3"
-	},
-	"dependencies": {}
+		"json-schema-to-typescript": "9.1.0",
+		"mocha": "9.1.2",
+		"source-map-support": "0.5.19",
+		"ts-node": "^10.2.1",
+		"typescript": "4.4.3"
+	}
 }
