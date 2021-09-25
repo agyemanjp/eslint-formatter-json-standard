@@ -3,19 +3,15 @@
 		"target": "es6",
 		"module": "commonjs",
 		"outDir": "./dist",
-		"rootDirs": [
-			"./src",
-			"./test",
-		],
 		"strict": true,
 		"esModuleInterop": true,
 		"incremental": true,
 		"sourceMap": true,
+		"declaration": true,
 		"skipLibCheck": true
 	},
 	"exclude": [],
 	"include": [
-		"./src",
-		"./test",
+		"./src"
 	]
 }
